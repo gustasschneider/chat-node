@@ -38,7 +38,7 @@ function addMessage(type, user, msg){
             break;
     }
 
-    ul.scroll = ul.scrollHeight;
+    ul.scrollTop = ul.scrollHeight;
 }
 
 //Ao inserir o nome do usuario e digitar enter (13) vai emitir a msg pro servidor
@@ -111,10 +111,12 @@ socket.on('disconnect', ()=>{
     userList = [];
     renderUserList();
 });
+
 //Tentando reconectar
 socket.on('connect_error', ()=>{
     addMessage('status', null, 'Tentando restabelecer a conexão!');
 });
+
 //Reconectado
 socket.on('reconnect', ()=>{
     addMessage('status', null, 'Reconectado!');
